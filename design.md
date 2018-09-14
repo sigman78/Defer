@@ -46,6 +46,47 @@ asyncDef(Req{})
 
 ## Proposed syntax
 
+```c++
+template<typename Result, typename Error=void>
+class Defer {
+public:
+    // movable only
+
+    template<typename... Args>
+    void resolve(Args&&...);
+
+    template<typename... Args>
+    void reject(Args&&...);
+
+    template<typename Fn>
+    Defer<Result, Error>& success(Fn&&);
+
+    template<typename Fn>
+    Defer<Result, Error>& fail(Fn&&);
+
+    template<typename... Args>
+    static Defer<Result, Error> resolved(Args&&...);
+
+    template<typename... Args>
+    static Defer<Result, Error> failed(Args&&...);
+
+    template<typename NewResult, typename Fn>
+    Defer<NewResult, Error> then(Fn&&);
+
+    template<typename Fn>
+    Defer<Result, Error> otherwise(Fn&&);
+};
+
+template<typename Result, typename Error=void>
+class Promise {
+public:
+    // copyable
+
+    Defer<Result, Error> defer();
+};
+
+```
+
 ## Usage examples
 
 ```

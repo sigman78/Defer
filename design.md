@@ -3,6 +3,17 @@ Design
 
 ## Motivation
 
+  * Provide sound and consistent async interface
+  * Self-descriptive API
+  * Provide composition with async primitives: then, join, etc
+  * Built-in possibility to handle errors in async calls
+  * No more callback hell
+
+What library is not:
+
+  * **NOT** Replacement for std::future
+  * **NOT** MT safe
+  * **NOT** Backwards compatible
 
 ## Type notation
 

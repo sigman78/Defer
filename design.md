@@ -29,7 +29,7 @@ Such service might look like so:
 
 ```c++
 template<typename Res>
-using Callback = std::function<Res>;
+using Callback = std::function<void(Res)>;
 
 class Service {
     void makeRequest(Request, Callback<Response>);

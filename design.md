@@ -70,7 +70,7 @@ NotYetAvailable<Result> doSomething(Request);
 NotYetAvailable<OtherResult> doAnother(AnotherRequest);
 ```
 
-Clearly this is step of from the callbacks to the concise and expressive APIs.
+Clearly this is a step of from the callbacks to the concise and expressive APIs.
 
 
 ## Type notation

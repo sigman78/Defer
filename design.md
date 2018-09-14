@@ -66,11 +66,30 @@ Something like the container with the not yet existing value or a contract. This
 clearly to express they intent and nature.
 
 ```c++
-NotYetAvailable<Result> doSomething(Request);
-NotYetAvailable<OtherResult> doAnother(AnotherRequest);
+// sync api
+Result syncSomething(Request);
+// async api
+NotAvailableYet<Result> asyncSomething(Request);
 ```
 
-Clearly this is a step of from the callbacks to the concise and expressive APIs.
+Clearly this is a step of from the callbacks to the concise and expressive APIs. Given that we have some sort of the
+composition function we can easily rewrite the sequence:
+
+```c++
+Defer<Bytes> loadFile(Url);
+Defer<Url> parseHtml(Bytes);
+Defer<Image> decodeImage(Bytes);
+void doSomethingWithImage(Image)
+
+// composition
+// Url ⊕ loadFile ⊕ parseHtml ⊕ loadFile ⊕ decodeImage ⊕ doSomethingWithImage
+// or in proposed syntax
+loadFile(url)
+ .then(parseHtml)
+ .then(loadFile)
+ .then(decodeImage)
+ .onSuccess(doSomethingWithImage)
+```
 
 
 ## Type notation

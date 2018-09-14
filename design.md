@@ -271,3 +271,4 @@ Defer<SumOfRsp> reduce(list<Defer<Rsp>> li, sumOp) {
   * [Monadic operations for std::optional P0798R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0798r0.html)
   * [Monadic interface P0650R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0650r1.pdf)
   * [Folly's Future](https://github.com/facebook/folly/blob/master/folly/docs/Futures.md)
+  * [Twitter's Future](https://twitter.github.io/util/docs/com/twitter/util/Future.html)

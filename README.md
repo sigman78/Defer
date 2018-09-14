@@ -5,7 +5,7 @@ Defer is a C++17 library for non-blocking variant of std::future and a piece of 
 
 ## Documentation
 
-See (design.md) for now as the source of inspiration and design notes.
+See [design document](design.md) for now as the source of inspiration and design notes.
 
 ## Example
 

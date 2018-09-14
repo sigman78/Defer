@@ -1,7 +1,7 @@
-Defered
+Defer
 =======
 
-Defered is a C++17 library for non-blocking variant of std::future and a piece of monadic-like sugar.
+Defer is a C++17 library for non-blocking variant of std::future and a piece of monadic-like sugar.
 
 ## Documentation
 
@@ -17,6 +17,23 @@ Defer<Response> asyncOp(Request req) {
     addCompletionHandler(reqId, [promise, reqId](){ promise.resolve(getResult(reqId)); });
     return promise.defer();
 }
+
+// Async API sequential composition
+
+Defer<Handle> openFile(string name);
+Defer<Bytes> readFile(Handle file);
+Defer<JSON> parse(Bytes buffer);
+
+openFile("config.json")
+    .then(readFile)
+    .then(parse)
+    .success([](JSON json) {
+        config = json;
+    })
+    .fail([]() {
+        die();
+    });
+    
 ```
 
 ## License

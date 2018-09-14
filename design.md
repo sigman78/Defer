@@ -14,6 +14,16 @@ What library is not:
   * **NOT** Replacement for std::future
   * **NOT** MT safe
   * **NOT** Backwards compatible
+  * **NOT** Cares of execution context
+  
+## Preface
+
+There are a lot of single-threaded non-mt async architectures in the wild. Such architectures are notably predictable easier
+to design, avoid horrors of the low-level multithreaded programming and reasonably customizable. Several languages / frameworks
+use that approach to provide non-blocking access to the long-running APIs.
+
+Historically such APIs was designed with the some flavor of the callbacks in mind. Given the *Service* one may issue a *request*
+and provide a *callback* which will be called some time later upon completion and on the same context/thread. **Note:** We do not mention error processing, cancelation, timeout handling to keep the focus on the issue in hands.
 
 ## Type notation
 

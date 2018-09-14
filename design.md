@@ -25,6 +25,54 @@ use that approach to provide non-blocking access to the long-running APIs.
 Historically such APIs was designed with the some flavor of the callbacks in mind. Given the *Service* one may issue a *request*
 and provide a *callback* which will be called some time later upon completion and on the same context/thread. **Note:** We do not mention error processing, cancelation, timeout handling to keep the focus on the issue in hands.
 
+Such service might look like so:
+
+```c++
+template<typename Res>
+using Callback = std::function<Res>;
+
+class Service {
+    void makeRequest(Request, Callback<Response>);
+    void processCompletedRequests();
+};
+```
+
+Or possible any other invariant with explicit dispatching. While this is minimally viable approach is trivial to implement
+it lacks the clarity, extensibility and what is more important - *composability*.
+
+Consider the situtation when you have to perform more than one async operation in row. Even with the help of the lambda
+syntax in C++ or similar language such construction will quickly become a monstrocity on its own even which leads to so called
+*callback hell*:
+
+```c++
+void loadFile(Url, Callback<Bytes>);
+void parseHtml(Bytes, Callback<Url>);
+void decodeImage(Bytes, Callback<Image>);
+
+loadFile(pageUrl, [](Bytes bytes) {
+    parseHtml(bytes, [](Url imageUrl) {
+        loadFile(imageUrl, [](Bytes bytes) {
+            decodeImage(bytes, [](Image img) {
+                // .. do something with the image
+            }
+        }
+    }
+}
+```
+
+One of the ways out of it is to avoid lexical scope recursion here and replace it with the linear composition. Lets
+image that the function can normally return *some* result (as most normal functions do) which is not available yet.
+Something like the container with the not yet existing value or a contract. This would make async functions signature
+clearly to express they intent and nature.
+
+```c++
+NotYetAvailable<Result> doSomething(Request);
+NotYetAvailable<OtherResult> doAnother(AnotherRequest);
+```
+
+Clearly this is step of from the callbacks to the concise and expressive APIs.
+
+
 ## Type notation
 
 ```

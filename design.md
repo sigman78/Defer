@@ -139,3 +139,5 @@ Defer<SumOfRsp> reduce(list<Defer<Rsp>> li, sumOp) {
   * [I see a monad in your future, Bartosz Milewski](https://bartoszmilewski.com/2014/02/26/c17-i-see-a-monad-in-your-future/)
   * [WG21 N3721 proposal](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3721.pdf)
   * [ES6 Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+  * [Monadic operations for std::optional P0798R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0798r0.html)
+  * [Monadic interface P0650R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0650r1.pdf)

@@ -272,3 +272,4 @@ Defer<SumOfRsp> reduce(list<Defer<Rsp>> li, sumOp) {
   * [Monadic interface P0650R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0650r1.pdf)
   * [Folly's Future](https://github.com/facebook/folly/blob/master/folly/docs/Futures.md)
   * [Twitter's Future](https://twitter.github.io/util/docs/com/twitter/util/Future.html)
+  * [Scala Future](https://docs.scala-lang.org/overviews/core/futures.html)

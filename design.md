@@ -274,3 +274,4 @@ Defer<SumOfRsp> reduce(list<Defer<Rsp>> li, sumOp) {
   * [Twitter's Future](https://twitter.github.io/util/docs/com/twitter/util/Future.html)
   * [Scala Future](https://docs.scala-lang.org/overviews/core/futures.html)
   * [Evolution of asynchronous javascript](https://blog.risingstack.com/asynchronous-javascript/)
+  * [Just::thread](https://www.stdthread.co.uk)
